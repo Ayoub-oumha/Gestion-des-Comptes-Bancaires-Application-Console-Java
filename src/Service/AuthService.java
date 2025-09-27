@@ -4,14 +4,19 @@ import Model.Personne;
 import Repositories.ImpPreson;
 
 public class AuthService {
-        public ImpPreson repoPreson = new ImpPreson() ;
-        public boolean login(String email , String password){
-                Personne persson = repoPreson.findUserByEmail(email) ;
-                if(persson != null){
-                       return true;
+        public ImpPreson imppreson ;
+        public AuthService(ImpPreson imppreson){
+                this.imppreson = imppreson;
+        }
+
+        public  Personne login(String email , String password){
+                Personne persson = imppreson.findUserByEmail(email) ;
+                if(persson == null) {
+                        System.out.println("Invalid email or password");
                 }
-                else {
-                        return  false;
+                if(!password.equals(persson.getPassword())){
+                        System.out.println("Invalid password");
                 }
+                return persson;
         }
 }

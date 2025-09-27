@@ -2,18 +2,19 @@ package View;
 
 
 
+import Model.Personne;
 import Service.AuthService;
 
 import java.util.Scanner;
 
 public class MenuPrincipal {
-    private   AuthService authservice ;
+    private static   AuthService authservice ;
     static Scanner sc = new Scanner(System.in);
     public MenuPrincipal(AuthService authservice){
-        this.authservice = authservice;
+        MenuPrincipal.authservice = authservice;
     }
 
-    public  void showMenuPrincipal(){
+    public static   void showMenuPrincipal(){
         //Scanner sc = new Scanner(System.in);
         System.out.println("MenuPrincipal");
         while(true){
@@ -39,14 +40,14 @@ public class MenuPrincipal {
 
         }
     }
-     void showMenuLogin(){
+     public static void showMenuLogin(){
 
         System.out.println("============================ Login ============================");
         System.out.println("Email :");
         String email = sc.next();
         System.out.println("Password :");
         String password = sc.next();
-        boolean loggeIn = authservice.login(email , password);
+        Personne loggeIn = authservice.login(email , password);
         if(loggeIn){
             System.out.println("Login successful");
             showMenuClient() ;
