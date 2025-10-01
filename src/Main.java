@@ -1,9 +1,0 @@
-import View.MenuPrincipal;
-
-public class Main {
-    public static void main(String[] argc){
-        Application.run();
-
-
-    }
-}
